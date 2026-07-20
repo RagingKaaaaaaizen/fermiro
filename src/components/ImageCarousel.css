@@ -1,0 +1,209 @@
+.carousel-section {
+  background: #000000;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: visible;
+}
+
+.carousel-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.carousel-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.carousel-3d-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Override 3D carousel arrow styles to neutral colors */
+.carousel-3d-wrapper .cascade-slider_arrow {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.carousel-3d-wrapper .cascade-slider_arrow:hover {
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: translate(0, -50%) scale(1.1);
+}
+
+/* Ensure carousel images are same resolution and fit well */
+.carousel-3d-wrapper .cascade-slider_slides img {
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+/* Active slide enhancement */
+.carousel-3d-wrapper .cascade-slider_item.now img {
+  filter: grayscale(0) !important;
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.2);
+}
+
+/* Lightbox Modal Styles */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lightboxFadeIn 0.5s ease;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.closing {
+  animation: lightboxFadeOut 0.5s ease forwards;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes lightboxFadeOut {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: default;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: lightboxImageZoom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightbox-overlay.closing .lightbox-image {
+  animation: lightboxImageZoomOut 0.5s ease forwards;
+}
+
+@keyframes lightboxImageZoom {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lightboxImageZoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.lightbox-hint {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 0;
+  animation: lightboxHintFade 0.8s ease 0.3s both;
+}
+
+.lightbox-overlay.closing .lightbox-hint {
+  animation: lightboxHintFadeOut 0.3s ease forwards;
+}
+
+@keyframes lightboxHintFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lightboxHintFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-section {
+    padding: 3rem 1rem;
+  }
+
+  .carousel-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .carousel-3d-wrapper {
+    padding: 1rem 0;
+  }
+}

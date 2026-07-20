@@ -1,0 +1,54 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Color Palette */
+  --color-primary: #32CD32;      /* Lime green */
+  --color-secondary: #93DC5C;    /* Light green */
+  --color-accent: #B7E892;       /* Light pale green */
+  --color-neutral: #DBF3C9;      /* Sea green */
+  --color-highlight: #C3F550;    /* Lime */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #32CD32 0%, #93DC5C 100%);
+  --gradient-secondary: linear-gradient(135deg, #93DC5C 0%, #B7E892 100%);
+  --gradient-accent: linear-gradient(135deg, #B7E892 0%, #DBF3C9 100%);
+  
+  /* Text Colors */
+  --color-text-dark: #2d3748;
+  --color-text-light: #ffffff;
+  --color-text-muted: #666666;
+
+  color-scheme: light dark;
+  color: var(--color-text-dark);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
